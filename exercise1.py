@@ -7,13 +7,13 @@ except:
 lines=fhand.readlines()
 bibon=open('output.txt', 'w')
 for line in lines:
-        if line.startswith('Received: from'):
-                ind=line.find('[')
-                en_ind=line.find(']')
+        ind=line.find('[')
+        en_ind=line.find(']')
+        if line.startswith('Received: from') and 'unix' not in line[ind:en_ind]:
                 word=line[ind+1:en_ind]
                 print(word)
                 bibon.write(word)
                 bibon.write('\n')
-fhand.close()
 
+fhand.close()
 
